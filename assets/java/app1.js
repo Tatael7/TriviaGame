@@ -36,28 +36,29 @@ var j =Math.floor((Math.random() * 8) + 0);
 var demo = questions[j];
 var list = answers[j];
 
-var right = 3;
-var timeRemaining = 80;
+var right = 0;
+var timeRemaining;
 
 console.log(questions[j]);
 console.log(answers[j]);
 console.log(list);
 
-function done(){
-    alert("You are done HooMan, you got " + right + " questions correct");
-}
 
 function decrement(){
     timeRemaining--;
     $("#time").html("<h2>" + "Time Remaining: " + timeRemaining + "</h2>");
     if( timeRemaining === 0){
+        alert("You are done HooMan, you got " + right + " questions correct");
         reset();
+        }
+        
     }
 
-}
+
 
 function reset(){
-    setTimeout(done , 1000 * 80);
+    setTimeout( 1000 * 20);
+    timeRemaining = 20;
     play();
 }
 
