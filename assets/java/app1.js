@@ -38,38 +38,77 @@ var list = answers[j];
 
 var right = 0;
 var timeRemaining;
+var buenas = [];
+var malas = [];
 
 console.log(questions[j]);
 console.log(answers[j]);
 console.log(list);
 
-
-function decrement(){
-    timeRemaining--;
-    $("#time").html("<h2>" + "Time Remaining: " + timeRemaining + "</h2>");
-    if( timeRemaining === 0){
-        alert("You are done HooMan, you got " + right + " questions correct");
-        reset();
-        }
-        
-    }
-
-
-
 function reset(){
-    setTimeout( 1000 * 20);
-    timeRemaining = 20;
+    // setTimeout(alert("You have 80 seconds to complete this quiz"), 1000 * 81);
+    timeRemaining = 80;
     play();
 }
 
 function play(){
     $("#pregunta").text(demo);
-    $("#opt1").text(list[0]);
-    $("#opt2").text(list[1]);
-    $("#opt3").text(list[2]);
-    $("#opt4").text(list[3]);
+    $("#opt1").text("A: " + list[0]);
+    $("#opt2").text("B: " + list[1]);
+    $("#opt3").text("C: " + list[2]);
+    $("#opt4").text("D: " + list[3]);
     clearInterval(intervalId);
-    intervalId = setInterval(decrement, 1000); 
+    intervalId = setInterval(decrement, 1000);
+
+    
     
 }
+
+function decrement(){
+    timeRemaining--;
+    $("#time").html("<h2>" + "Time Remaining: " + timeRemaining + "</h2>");
+    if( timeRemaining === 0){
+        // alert("You are done HooMan, you got " + right + " questions correct");
+        reset();
+    }
+        
+}
+
+function choosing(){
+    $("#opt1").on("click", function(){
+        console.log(list[0]);
+        if(list[0] === respuestas1 || respuestas2 || respuestas3 || respuestas4 || respuestas5 || respuestas6 || respuestas7 || respuestas8) {
+            buenas.push(list[0]);
+        } else {
+            malas.push(list[0]);
+        }
+    } );
+    $("#opt2").on("click", function() {
+        console.log(list[1]);
+        if(list[1] === respuestas1 || respuestas2 || respuestas3 || respuestas4 || respuestas5 || respuestas6 || respuestas7 || respuestas8) {
+            buenas.push(list[1]);
+        } else {
+            malas.push(list[1]);
+        }
+    });
+    $("#opt3").on("click", function(){
+        console.log(list[2]);
+        if(list[2] === respuestas1 || respuestas2 || respuestas3 || respuestas4 || respuestas5 || respuestas6 || respuestas7 || respuestas8) {
+            buenas.push(list[2]);
+        } else {
+            malas.push(list[2]);
+        }
+    } );
+    $("#opt4").on("click", function() {
+        console.log(list[3]);
+        if(list[3] === respuestas1 || respuestas2 || respuestas3 || respuestas4 || respuestas5 || respuestas6 || respuestas7 || respuestas8) {
+            buenas.push(list[3]);
+        } else {
+            malas.push(list[3]);
+        }
+    } );
+}
+
+
 reset();
+choosing();
