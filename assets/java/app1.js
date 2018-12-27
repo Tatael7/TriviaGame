@@ -32,26 +32,20 @@ var aa8 = [respuestas8 , "Cutie Pie" , "Moon Bunny" , "Chiquita"];
 //variables that will be pulled 
 var questions = [q1 , q2 , q3 , q4 , q5 , q6 , q7 , q8];
 var answers = [aa1 , aa2 , aa3 , aa4 , aa5 , aa6 , aa7 , aa8];
-var j =Math.floor((Math.random() * 8) + 0);
+var j = 0;//Math.floor((Math.random() * 8) + 0);
 var demo = questions[j];
 var list = answers[j];
 
-var right = 0;
 var timeRemaining;
 var buenas = [];
-var malas = [];
 
 console.log(questions[j]);
 console.log(answers[j]);
 console.log(list);
 
 function reset(){
-    // setTimeout(alert("You have 80 seconds to complete this quiz"), 1000 * 81);
+    setTimeout(alert("You have 80 seconds to complete this quiz"), 1000 * 81);
     timeRemaining = 80;
-    play();
-}
-
-function play(){
     $("#pregunta").text(demo);
     $("#opt1").text("A: " + list[0]);
     $("#opt2").text("B: " + list[1]);
@@ -59,54 +53,52 @@ function play(){
     $("#opt4").text("D: " + list[3]);
     clearInterval(intervalId);
     intervalId = setInterval(decrement, 1000);
-
-    
-    
 }
 
 function decrement(){
     timeRemaining--;
     $("#time").html("<h2>" + "Time Remaining: " + timeRemaining + "</h2>");
     if( timeRemaining === 0){
-        // alert("You are done HooMan, you got " + right + " questions correct");
         reset();
-    }
-        
+    }     
 }
 
 function choosing(){
     $("#opt1").on("click", function(){
-        console.log(list[0]);
-        if(list[0] === respuestas1 || respuestas2 || respuestas3 || respuestas4 || respuestas5 || respuestas6 || respuestas7 || respuestas8) {
-            buenas.push(list[0]);
-        } else {
-            malas.push(list[0]);
-        }
+        console.log("A");
+        buenas.push("A");
+        j++;
+        nextQuestion();
     } );
     $("#opt2").on("click", function() {
-        console.log(list[1]);
-        if(list[1] === respuestas1 || respuestas2 || respuestas3 || respuestas4 || respuestas5 || respuestas6 || respuestas7 || respuestas8) {
-            buenas.push(list[1]);
-        } else {
-            malas.push(list[1]);
-        }
+        console.log("B");
+        buenas.push("B");
+        j++;
+        nextQuestion();
     });
     $("#opt3").on("click", function(){
-        console.log(list[2]);
-        if(list[2] === respuestas1 || respuestas2 || respuestas3 || respuestas4 || respuestas5 || respuestas6 || respuestas7 || respuestas8) {
-            buenas.push(list[2]);
-        } else {
-            malas.push(list[2]);
-        }
+        console.log("C");
+        buenas.push("C");
+        j++;
+        nextQuestion();
     } );
     $("#opt4").on("click", function() {
-        console.log(list[3]);
-        if(list[3] === respuestas1 || respuestas2 || respuestas3 || respuestas4 || respuestas5 || respuestas6 || respuestas7 || respuestas8) {
-            buenas.push(list[3]);
-        } else {
-            malas.push(list[3]);
-        }
+        console.log("D");
+        buenas.push("D");
+        j++;
+        nextQuestion();
     } );
+}
+
+function nextQuestion () {
+    console.log(questions[j]);
+    console.log(answers[j]);
+    var nuevas = answers[j];
+    $("#pregunta").html("<p>" + questions[j] + "</p>");
+    $("#opt1").text("A: " + nuevas[0]);
+    $("#opt2").text("B: " + nuevas[1]);
+    $("#opt3").text("C: " + nuevas[2]);
+    $("#opt4").text("D: " + nuevas[3]);
 }
 
 
