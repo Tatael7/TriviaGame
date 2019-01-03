@@ -28,24 +28,29 @@ var q7 = "Which of the following is not of Joestar blood?";
 var aa7 = ["Jotaro Kujo", "Josuke Higashikata" , "Giorno Giovana" , respuestas7];
 var q8 = "What is the name of Nana Osaki's band?";
 var aa8 = [respuestas8 , "Cutie Pie" , "Moon Bunny" , "Chiquita"];
+var q9 = "The anime quiz is done";
+var aa9 = [];
 
 //variables that will be pulled 
-var questions = [q1 , q2 , q3 , q4 , q5 , q6 , q7 , q8];
-var answers = [aa1 , aa2 , aa3 , aa4 , aa5 , aa6 , aa7 , aa8];
+var questions = [q1 , q2 , q3 , q4 , q5 , q6 , q7 , q8 , q9];
+var answers = [aa1 , aa2 , aa3 , aa4 , aa5 , aa6 , aa7 , aa8 , aa9];
 var j = 0;//Math.floor((Math.random() * 8) + 0);
 var demo = questions[j];
 var list = answers[j];
 
 var timeRemaining;
 var buenas = [];
+var score;
 
 console.log(questions[j]);
 console.log(answers[j]);
 console.log(list);
 
-function reset(){
-    setTimeout(alert("You have 80 seconds to complete this quiz"), 1000 * 81);
-    timeRemaining = 80;
+function reset() {
+    setTimeout(alert("You have 60 seconds to complete this quiz"), 1000 * 61);
+    timeRemaining = 60;
+    j = 0;
+    score = 0;
     $("#pregunta").text(demo);
     $("#opt1").text("A: " + list[0]);
     $("#opt2").text("B: " + list[1]);
@@ -55,7 +60,7 @@ function reset(){
     intervalId = setInterval(decrement, 1000);
 }
 
-function decrement(){
+function decrement() {
     timeRemaining--;
     $("#time").html("<h2>" + "Time Remaining: " + timeRemaining + "</h2>");
     if( timeRemaining === 0){
@@ -63,7 +68,7 @@ function decrement(){
     }     
 }
 
-function choosing(){
+function choosing() {
     $("#opt1").on("click", function(){
         console.log("A");
         buenas.push("A");
@@ -99,8 +104,46 @@ function nextQuestion () {
     $("#opt2").text("B: " + nuevas[1]);
     $("#opt3").text("C: " + nuevas[2]);
     $("#opt4").text("D: " + nuevas[3]);
+    endGame();
 }
 
+function endGame() {
+    console.log("this is the j " + j);
+    if( j >= 8) {
+        alert("The Game is over");
+        scoreCheck();
+        alert("You got " + score + " answers right");
+        reset()    
+    }
+}
+
+function scoreCheck() {
+    if(buenas[0] == "B") {
+        score++;
+    }
+    if(buenas[1] == "D") {
+        score++;
+    }
+    if(buenas[2] == "A") {
+        score++;
+    }
+    if(buenas[3] == "D") {
+        score++;
+    }
+    if(buenas[4] == "C") {
+        score++;
+    }
+    if(buenas[5] == "C") {
+        score++;
+    }
+    if(buenas[6] == "D") {
+        score++;
+    }
+    if(buenas[7] == "A") {
+        score++;
+    }
+}
 
 reset();
 choosing();
+endGame();
