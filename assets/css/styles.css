@@ -6,10 +6,18 @@
 }
 
 #pregunta {
-    background: red;
+    background: whitesmoke;
     height: auto;
     width: auto;
     font-size: 30px;
+}
+
+#time {
+    background-color: whitesmoke;
+}
+
+#answ {
+    background-color: whitesmoke;
 }
 
 footer {
@@ -24,7 +32,7 @@ footer {
     color: orangered;
 }
 
-/* body {
+body {
     background-image: url("../images/back.jpg")
 } 
-  */
+ 
