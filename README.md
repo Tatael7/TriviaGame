@@ -5,3 +5,5 @@ will atempt to set every question at to a timer and then a congragilatory screen
 depending on eiter a win or loss
 will also try to integrate a noise/audio clip begining at the 5 second mark like in Super Mario 
 when you begin to run out of time.
+
+https://tatael7.github.io/TriviaGame/
